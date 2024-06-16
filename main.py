@@ -4,7 +4,7 @@ from pytube import YouTube
 from datetime import datetime
 import configparser
 import glob
-
+from os.path import expanduser
 
 class Read_cfg():
     def __init__(self):
@@ -37,6 +37,8 @@ class Read_cfg():
         config = configparser.ConfigParser()
         config.read('configuration.cfg')
         path = config['Youtube']['path_videos']
+        if path=="~/Youtube/":
+            path = expanduser("~")+"/Youtube/"
         return path
     
 
